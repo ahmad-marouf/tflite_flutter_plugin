@@ -5,6 +5,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+		mavenCentral ()
+		maven {          // This maven with url is for snapshot release (nightly)
+            name 'ossrh-snapshot'
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
     }
 
     dependencies {
@@ -30,5 +35,11 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+	
+	dependencies {
+		implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
+		implementation 'org.tensorflow:tensorflow-lite-select-tf-ops:0.0.0-nightly-SNAPSHOT'
+		implementation 'org.tensorflow:tensorflow-lite-support:0.0.0-nightly'
     }
 }
